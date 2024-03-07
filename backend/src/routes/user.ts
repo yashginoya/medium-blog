@@ -70,7 +70,10 @@ userRouter.post('/signin', async (c) => {
         }
 
         const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-        return c.json({ jwt });
+        if(user.name == undefined)
+        return c.json({jwt,name: "Annonymous"});
+        else
+        return c.json({ jwt , name: user.name || "Annonymous" });
     } catch (e) {
         c.status(403);
         return c.json({ error: "error while signing in" });
