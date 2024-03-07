@@ -95,3 +95,34 @@ userRouter.post('/deleteUser', async (c) => {
         return c.json({ error: "error while deleting user" });
     }
 })
+
+userRouter.put('/updateUser', async (c) => {
+    try {
+        const body = await c.req.json();
+        // const { success } = updateBlogInput.safeParse(body);
+        // if (!success) {
+        //     c.status(411);
+        //     return c.json({
+        //         msg: "Inputs not correct"
+        //     })
+        // }
+        const prisma = new PrismaClient({
+            datasourceUrl: c.env.DATABASE_URL,
+        }).$extends(withAccelerate());
+        const post = await prisma.user.update({
+            where: {
+                id: body.id
+            },
+            data: {
+                // email: body.email,
+                name: body.name
+                // password: body.password
+            }
+        })
+
+        return c.json({ msg: 'User details Updated Successfully' });
+    } catch (e) {
+        c.status(403);
+        return c.json({ error: "error while updating User Details" });
+    }
+})
