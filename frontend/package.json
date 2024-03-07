@@ -10,6 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/core": "^7.24.0",
+    "@types/babel__generator": "^7.6.8",
+    "@types/babel__template": "^7.4.4",
+    "@types/babel__traverse": "^7.20.5",
+    "@types/prop-types": "^15.7.11",
+    "@types/scheduler": "^0.16.8",
     "@yashginoya/medium-common": "^1.0.0",
     "axios": "^1.6.7",
     "react": "^18.2.0",
