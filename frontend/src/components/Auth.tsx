@@ -20,7 +20,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             localStorage.setItem("username" , response.data.name);
             navigate("/blogs"); 
         } catch (e) {
-            console.log('request failed');
+            alert('Invalid Credentials');
         }
     }
 
