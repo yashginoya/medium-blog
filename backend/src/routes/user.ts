@@ -73,7 +73,7 @@ userRouter.post('/signin', async (c) => {
         if(user.name == undefined)
         return c.json({jwt,name: "Annonymous"});
         else
-        return c.json({ jwt , name: user.name || "Annonymous" });
+        return c.json({ jwt , name: user.name });
     } catch (e) {
         c.status(403);
         return c.json({ error: "error while signing in" });
